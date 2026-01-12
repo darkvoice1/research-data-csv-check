@@ -1,0 +1,14 @@
+﻿# Python虚拟环境（绝对不要提交）
+venv/
+# 上传的CSV文件（临时文件，不用提交）
+temp_uploads/
+# VS Code的配置文件（个性化设置，不用提交）
+.vscode/
+# Python缓存文件（自动生成，不用提交）
+__pycache__/
+*.pyc
+# 临时日志/缓存文件
+*.log
+*.tmp
+# 忽略检测示例数据文件
+test_data.csv
