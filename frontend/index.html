@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科研数据合规检测</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>科研数据合规检测</h1>
+
+        <!-- 检测规则说明区域（扩充为10条） -->
+        <div class="rules-area">
+            <h3>📋 本次检测包含以下10条通用规则</h3>
+            <ul class="rules-list">
+                <li><strong>1. 必填列检测</strong>：检查样本编号等核心列是否存在且无空值</li>
+                <li><strong>2. 日期格式检测</strong>：校验日期列是否为YYYY-MM-DD或YYYYMMDD格式</li>
+                <li><strong>3. 数值列检测</strong>：检查数值列是否为数字且非负数</li>
+                <li><strong>4. 重复值检测</strong>：检查样本编号等唯一标识列是否存在重复值</li>
+                <li><strong>5. 列名规范检测</strong>：禁止列名包含特殊字符、全角空格等非法字符</li>
+                <li><strong>6. 空行检测</strong>：检查CSV中是否存在无任何数据的纯空行</li>
+                <li><strong>7. 枚举值检测</strong>：检查样本类型/检测状态等列取值是否符合预设范围</li>
+                <li><strong>8. 数据长度检测</strong>：检查样本编号/备注等列字符长度不超限</li>
+                <li><strong>9. 特殊字符检测</strong>：禁止备注/描述列包含\ / : * ? " <> |等敏感字符</li>
+                <li><strong>10. 全角字符检测</strong>：检查编号/数值列的数字/字母是否为半角格式</li>
+            </ul>
+        </div>
+
+        <!-- 上传区域 -->
+        <div class="upload-area">
+            <input type="file" id="fileInput" accept=".csv" hidden>
+            <button id="selectFileBtn" class="btn">选择文件</button>
+            <span id="fileNameDisplay">未选择文件</span>
+            <button id="uploadBtn" class="btn btn-primary">上传并检测</button>
+        </div>
+
+        <!-- 检测结果展示区域 -->
+        <div class="result-area" id="resultArea" style="display: none;">
+            <h3>检测结果</h3>
+            <div class="result-summary" id="resultSummary"></div>
+            <div class="error-list" id="errorList"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
