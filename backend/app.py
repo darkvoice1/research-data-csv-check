@@ -1,3 +1,32 @@
+# 原有的导入保持不变，新增这两行
+from flask import send_from_directory
+import os
+
+# 原有的CORS(app)、检测接口等代码保持不变
+
+# 新增：前端页面路由（访问根域名时加载index.html）
+@app.route('/')
+def serve_frontend():
+    frontend_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),  # 获取app.py的绝对路径（backend目录）
+        '../frontend'  # 向上一级，找到同级的frontend文件夹
+    )
+    # 确保路径存在（避免部署时因路径问题报错）
+    if not os.path.exists(frontend_path):
+        return "前端文件夹不存在", 404
+    return send_from_directory(frontend_path, 'index.html')
+
+# 新增：前端静态文件路由（加载css、js等文件）
+@app.route('/<path:path>')
+def serve_static_files(path):
+    frontend_path = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        '../frontend'
+    )
+    if not os.path.exists(os.path.join(frontend_path, path)):
+        return "静态文件不存在", 404
+    return send_from_directory(frontend_path, path)
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
