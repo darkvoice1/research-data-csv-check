@@ -1,7 +1,1 @@
-# 指定国内pip源（解决安装慢/失败问题）
--i https://pypi.tuna.tsinghua.edu.cn/simple
-
-# 你的项目核心依赖
-flask>=2.0.0
-flask-cors>=4.0.0
-pandas>=1.4.0
+# 空文件
